@@ -1,11 +1,7 @@
 # Einmalzahlung200-Alpha-
-Ein Projekt mit einem naiven Ansatz, mit dem man die Einmalzahlung der Bundesregierung als Programm implementieren könnte.
 
-Wie funktioniert es?
+Es handelt sich hierbei um ein Projekt mit einem unerfahrenen Ansatz, welches darauf abzielt, die einmalige Zahlung der Bundesregierung als Programm umzusetzen.
 
-Das Programm ist eine WPF und erfordert zunächst einmal die Anmeldeinformationen.
-Diese sind in jeweils zwei separaten Textdateien gepseichert. 
-Ist ein User noch nicht registriert, so kann er einen neuen Account erstellen, die Daten
-werden dann in den Textdateien hinterlegt und der neue User kann sich dann anmelden.
+Das Programm basiert auf der WPF-Technologie und erfordert zu Beginn die Eingabe von Anmeldeinformationen. Diese sind in zwei separaten Textdateien gespeichert. Sollte ein Nutzer noch nicht registriert sein, so besteht die Möglichkeit, einen neuen Account zu erstellen. Die entsprechenden Daten werden in den Textdateien hinterlegt, woraufhin der neue Nutzer sich anmelden kann.
 
-Das Programm ist allerdings noch nicht ganz fertig und Änderung werden mit der Zeit gepusht.
+Allerdings ist das Programm derzeit noch nicht vollständig fertiggestellt und es werden kontinuierlich Änderungen vorgenommen.
