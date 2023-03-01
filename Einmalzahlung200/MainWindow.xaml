@@ -1,0 +1,122 @@
+﻿<Window x:Class="Einmalzahlung200.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Einmalzahlung200"
+        mc:Ignorable="d"
+        Title="Bund ID" Height="500" Width="500"
+        Icon="C:\Users\justi\Desktop\Einmalzahlung200\Ressourcen\bundesamt.ico">
+
+    <Grid>
+        <Label Name="US1"  
+        Content="Willkommen bei Bund ID!"  
+        Width="160" Height="30"  
+        Canvas.Left="10" Canvas.Top="10"  
+        FontSize="14" FontFamily="Calibri"  
+        FontWeight="Bold" Margin="0,0,0,300"
+        VerticalAlignment="Bottom"/>
+
+        <Label Name="UsernameLabel"  
+        Content="Nutzername"  
+        Width="70" Height="25"  
+        Canvas.Left="10" Canvas.Top="10"  
+        FontSize="11" FontFamily="Calibri"  
+        FontWeight="Normal" Margin="0,0,139,70"
+        VerticalAlignment="center"/>
+
+        <Label Name="PasswordLabel"  
+        Content="Passwort"  
+        Width="70" Height="25"  
+        Canvas.Left="10" Canvas.Top="10"  
+        FontSize="11" FontFamily="Calibri"  
+        FontWeight="Normal" Margin="0,40,138,30"
+        VerticalAlignment="center"/>
+
+        <TextBox 
+            Name="Username"
+            Width="200"
+            Height= "20"
+            Margin="20,0,20,30"
+            Text="" />
+
+        <PasswordBox 
+            Name="Password"
+            Width="200"
+            Height= "20"
+            Margin="20,0,20,-45"
+            FontWeight="Bold"
+            PasswordChar="*"/>
+
+        <Label Name="ErrorUserNotExists"  
+        Content="Sie sind noch nicht registriert"  
+        Width="164" Height="25"  
+        Canvas.Left="10" Canvas.Top="10"  
+        FontSize="13" FontFamily="Calibri"  
+        FontWeight="Normal" Margin="0,110,0,0"
+        VerticalAlignment="Center"/>
+
+        <Label Name="ErrorWrongPassword"  
+        Content="Passwort falsch"  
+        Width="91" Height="25" 
+        Canvas.Left="10" Canvas.Top="10"  
+        FontSize="13" FontFamily="Calibri"  
+        FontWeight="Normal" Margin="0,110,0,0"
+        VerticalAlignment="Center"/>
+
+        <Button 
+            x:Name="SignIn"
+            FontWeight="Bold"
+            Height="30" Width="100"  
+            BorderThickness="0"
+           Content="Anmelden"  
+           Margin="0,180,110,0" VerticalAlignment="center"  
+           HorizontalAlignment="Center"
+           Click="SignIn_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button 
+            x:Name="register"
+            FontWeight="Bold"
+            Height="30" Width="100"  
+            BorderThickness="2"
+           Content="Registrieren"  
+           Margin="110,180,0,0" VerticalAlignment="Center"  
+           HorizontalAlignment="center"
+           Click="register_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button 
+            x:Name="resetPW"
+            FontWeight="Bold"
+            Height="30" Width="210"  
+           Content="Ich weiß mein Passwort nicht"
+           BorderThickness="0"
+           Margin="0,260,0,0" VerticalAlignment="Center"  
+           HorizontalAlignment="center">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+            
+        </Button>
+        <Image Width="200"
+        Source="C:\Users\justi\Desktop\Einmalzahlung200\Ressourcen\bundID.png"
+        Margin="0,0,0,350"
+        HorizontalAlignment="Center"/>
+
+
+    </Grid>
+
+</Window>

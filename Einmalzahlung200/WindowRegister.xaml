@@ -1,0 +1,148 @@
+﻿<Window x:Class="Einmalzahlung200.WindowRegister"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Einmalzahlung200"
+        mc:Ignorable="d"
+        Title="Bund ID" Height="500" Width="500"
+        Icon="C:\Users\justi\Desktop\Einmalzahlung200\Ressourcen\bundesamt.ico">
+    <Grid>
+
+        <Label Name="US1"  
+        Content="Registrieren sie sich jetzt!"  
+        Width="160" Height="30"  
+        Canvas.Left="10" Canvas.Top="10"  
+        FontSize="14" FontFamily="Calibri"  
+        FontWeight="Medium" Margin="0,0,0,300"
+        VerticalAlignment="Bottom"/>
+
+
+        <TextBox 
+            Name="chooseUsername"
+            Width="200"
+            Height= "20"
+            Margin="20,0,20,30"
+            Text="" />
+
+        <PasswordBox 
+            Name="choosePassword"
+            Width="200"
+            Height= "20"
+            Margin="20,0,20,-45"
+            PasswordChar="*"
+            FontWeight="Bold"/>
+        <PasswordBox 
+            Name="choosePasswordBest"
+            Width="200"
+            Height= "20"
+            Margin="20,0,20,-120"
+            PasswordChar="*"
+            FontWeight="Bold"/>
+
+        <Label Name="chooseUsernameLabel"  
+        Content="Nutzername auswählen"  
+        Width="120" Height="25"  
+        Canvas.Left="0" Canvas.Top="0"  
+        FontSize="11" FontFamily="Calibri"  
+        FontWeight="Normal" Margin="0,0,85,70"
+        VerticalAlignment="center"/>
+
+        <Label Name="choosePasswordLabel"  
+        Content="Passwort"  
+        Width="70" Height="25"  
+        Canvas.Left="10" Canvas.Top="10"  
+        FontSize="11" FontFamily="Calibri"  
+        FontWeight="Normal" Margin="0,40,138,30"
+        VerticalAlignment="center"/>
+
+        <Label Name="ErrorUsername"  
+        Content="Nutzer existiert"  
+        Width="100" Height="25"  
+        Canvas.Left="0" Canvas.Top="0"  
+        FontSize="11" FontFamily="Calibri"
+        FontWeight="Normal" Margin="150,0,0,70"
+        VerticalAlignment="center"/>
+
+        <Label Name="ErrorPassword"  
+        Content="Passwörter stimmen nicht überein"  
+        Width="163" Height="25"  
+        Canvas.Left="0" Canvas.Top="0"  
+        FontSize="11" FontFamily="Calibri"
+        FontWeight="Normal" Margin="45,40,0,30"
+        VerticalAlignment="center"/>
+
+        <Label Name="ErrorPasswordTooShort"  
+        Content="Mindestens 8 Zeichen"  
+        Width="108" Height="25"  
+        Canvas.Left="0" Canvas.Top="0"  
+        FontSize="11" FontFamily="Calibri"
+        FontWeight="Normal" Margin="100,40,0,-45"
+        VerticalAlignment="center"/>
+
+        <Label Name="choosePasswordLabelBest"  
+        Content="Passwort bestätigen"  
+        Width="100" Height="25"  
+        Canvas.Left="10" Canvas.Top="10"  
+        FontSize="11" FontFamily="Calibri"  
+        FontWeight="Normal" Margin="0,40,108,-45"
+        VerticalAlignment="center"/>
+
+        <Button 
+            x:Name="chooseRegister"
+            FontWeight="Bold"
+            Height="30" Width="100"  
+            BorderThickness="0"
+           Content="Registrieren"  
+           Margin="0,200,110,0" VerticalAlignment="center"  
+           HorizontalAlignment="Center"
+            Click="register_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button 
+            x:Name="chooseBack"
+            FontWeight="Bold"
+            Height="30" Width="100"  
+            BorderThickness="0"
+           Content="Zurück"  
+           Margin="100,200,0,0" VerticalAlignment="center"  
+           HorizontalAlignment="Center"
+            Click="chooseBack_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Image Width="200"
+        Source="C:\Users\justi\Desktop\Einmalzahlung200\Ressourcen\bundID.png"
+        Margin="0,0,0,350"
+        HorizontalAlignment="Center"/>
+
+        <Image 
+        Name="ErrorLogo1"
+        Width="16"
+        Source="C:\Users\justi\Desktop\Einmalzahlung200\Ressourcen\Error.png"
+        Margin="0,0,240,30"
+        HorizontalAlignment="Center"/>
+
+        <Image 
+        Name="ErrorLogo2"
+        Width="16"
+        Source="C:\Users\justi\Desktop\Einmalzahlung200\Ressourcen\Error.png"
+        Margin="0,0,240,-45"
+        HorizontalAlignment="Center"/>
+
+        <Image 
+        Name="ErrorLogo3"
+        Width="16"
+        Source="C:\Users\justi\Desktop\Einmalzahlung200\Ressourcen\Error.png"
+        Margin="0,0,240,-120"
+        HorizontalAlignment="Center"/>
+    </Grid>
+</Window>
