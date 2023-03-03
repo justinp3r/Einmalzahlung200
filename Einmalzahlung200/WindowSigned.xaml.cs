@@ -88,7 +88,6 @@ namespace Einmalzahlung200
             StreamWriter stIBAN = new StreamWriter(dateipfadDT, true);
             stIBAN.WriteLine(chooseIban.Text);
             stIBAN.Close();
-
         }
     }
 }
