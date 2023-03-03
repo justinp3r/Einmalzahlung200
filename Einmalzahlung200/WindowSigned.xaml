@@ -14,18 +14,97 @@
         Width="140" Height="30"  
         Canvas.Left="0" Canvas.Top="0"  
         FontSize="14" FontFamily="Calibri"  
-        FontWeight="Bold" Margin="0,0,0,0"
+        FontWeight="Bold" Margin="0,0,0,160"
         VerticalAlignment="Center"/>
 
+        <TextBox 
+            Name="typeKey"
+            Width="200"
+            Height= "20"
+            Margin="20,0,20,30"
+            Text="" />
+    
+        <Image 
+        Name="ErrorLogo1"
+        Width="16"
+        Source="C:\Users\justi\Desktop\Einmalzahlung200\Ressourcen\Error.png"
+        Margin="0,0,235,30"
+        HorizontalAlignment="Center"/>
+
+        <Label 
+            Name="typeKeyLabel"  
+            Content="Sicherheitsschlüssel"  
+            Width="120" Height="25"  
+            Canvas.Left="0" Canvas.Top="0"  
+            FontSize="11" FontFamily="Calibri"  
+            FontWeight="Normal" Margin="0,0,85,70"
+            VerticalAlignment="center"/>
+
+        <Label 
+            Name="typeKeyLabelError"  
+            Content="Feld ist leer"  
+            Width="120" Height="25"  
+            Canvas.Left="0" Canvas.Top="0"  
+            FontSize="11" FontFamily="Calibri"  
+            FontWeight="Normal" Margin="200,0,0,70"
+            VerticalAlignment="center"/>
+
+        <TextBox 
+            Name="chooseIban"
+            Width="200"
+            Height= "20"
+            Margin="0,60,0,0"
+            Text="" />
+
+        <Image 
+        Name="ErrorLogo2"
+        Width="16"
+        Source="C:\Users\justi\Desktop\Einmalzahlung200\Ressourcen\Error.png"
+        Margin="0,60,235,0"
+        HorizontalAlignment="Center"/>
+    
+        <Label 
+            Name="chooseIbanLabel"  
+            Content="IBAN"  
+            Width="120" Height="25"  
+            Canvas.Left="0" Canvas.Top="0"  
+            FontSize="11" FontFamily="Calibri"  
+            FontWeight="Normal" Margin="0,20,85,0"
+            VerticalAlignment="center"/>
+    
+        <Label 
+            Name="chooseIbanLabelError"  
+            Content="Ungültige IBAN"  
+            Width="80" Height="25"  
+            Canvas.Left="0" Canvas.Top="0"  
+            FontSize="11" FontFamily="Calibri"  
+            FontWeight="Normal" Margin="130,20,0,0"
+            VerticalAlignment="center"/>
         <Button 
             x:Name="SignOut"
             FontWeight="Bold"
-            Height="30" Width="100"  
+            Height="30" Width="90"  
             BorderThickness="0"
-           Content="Abmelden"  
-           Margin="0,75,0,0" VerticalAlignment="center"  
+            Content="Abmelden"  
+            Margin="0,160,110,0" VerticalAlignment="center"  
+            HorizontalAlignment="Center"
+            Click="SignOut_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button 
+            x:Name="Continue"
+            FontWeight="Bold"
+            Height="30" Width="90"  
+            BorderThickness="0"
+           Content="Absenden"  
+           Margin="110,160,0,0" VerticalAlignment="center"  
            HorizontalAlignment="Center"
-           Click="SignOut_Click">
+           Click="Continue_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="15"/>

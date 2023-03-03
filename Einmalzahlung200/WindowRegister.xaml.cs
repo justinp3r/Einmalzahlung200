@@ -25,6 +25,7 @@ namespace Einmalzahlung200
         //Dateipfade zur Datenbank
         public string dateipfadUN = "C:\\Users\\justi\\Desktop\\Einmalzahlung200\\Usernames.txt";
         public string dateipfadPW = "C:\\Users\\justi\\Desktop\\Einmalzahlung200\\Passwords.txt";
+        public string dateipfadDT = "C:\\Users\\justi\\Desktop\\Einmalzahlung200\\data.txt";
         public WindowRegister()
         {
             //Elemente beschreiben(Farben und Höhe)
@@ -72,6 +73,8 @@ namespace Einmalzahlung200
             StreamWriter stpw = new StreamWriter(dateipfadPW, true);
             stpw.WriteLine(Password);
             stpw.Close();
+
+
         }
 
         //Diese Funktion checkt ob der Username verfügbar ist
