@@ -34,9 +34,12 @@ namespace Einmalzahlung200
             this.Height = 500;
             this.Width = 400;
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            this.chooseRegister.Background = (Brush)(new BrushConverter().ConvertFrom("#007986"));
-            this.chooseRegister.Foreground = Brushes.White;
 
+            this.chooseRegister.Background= (Brush)(new BrushConverter().ConvertFrom("#007986"));
+            this.chooseRegister.Foreground = Brushes.White;
+            this.chooseBack.Background = Brushes.White;
+            this.chooseBack.Foreground = (Brush)(new BrushConverter().ConvertFrom("#007986"));
+            this.chooseBack.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#007986"));
             this.ErrorUsername.Foreground = (Brush)(new BrushConverter().ConvertFrom("#F15249"));
             this.ErrorPassword.Foreground = (Brush)(new BrushConverter().ConvertFrom("#F15249"));
             this.ErrorPasswordTooShort.Foreground = (Brush)(new BrushConverter().ConvertFrom("#F15249"));

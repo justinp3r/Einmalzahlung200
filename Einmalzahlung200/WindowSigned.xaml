@@ -84,7 +84,7 @@
             x:Name="SignOut"
             FontWeight="Bold"
             Height="30" Width="90"  
-            BorderThickness="0"
+            BorderThickness="2"
             Content="Abmelden"  
             Margin="0,160,110,0" VerticalAlignment="center"  
             HorizontalAlignment="Center"

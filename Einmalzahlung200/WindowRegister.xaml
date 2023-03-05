@@ -94,7 +94,8 @@
             Height="30" Width="100"  
             BorderThickness="0"
            Content="Registrieren"  
-           Margin="0,200,110,0" VerticalAlignment="center"  
+           Margin=" 100,200,0,0" 
+           VerticalAlignment="center"  
            HorizontalAlignment="Center"
             Click="register_Click">
             <Button.Resources>
@@ -108,9 +109,9 @@
             x:Name="chooseBack"
             FontWeight="Bold"
             Height="30" Width="100"  
-            BorderThickness="0"
+            BorderThickness="2"
            Content="Zurück"  
-           Margin="100,200,0,0" VerticalAlignment="center"  
+           Margin="0,200,110,0" VerticalAlignment="center"  
            HorizontalAlignment="Center"
             Click="chooseBack_Click">
             <Button.Resources>

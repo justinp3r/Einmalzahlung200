@@ -29,9 +29,12 @@ namespace Einmalzahlung200
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.Height = 500;
             this.Width = 400;
+            this.Continue.Background = (Brush)(new BrushConverter().ConvertFrom("#007986"));
+            this.Continue.Foreground = Brushes.White;
             this.LogInBeta.Foreground = (Brush)(new BrushConverter().ConvertFrom("#007986"));
-            this.SignOut.Background= (Brush)(new BrushConverter().ConvertFrom("#007986"));
-            this.SignOut.Foreground = Brushes.White;
+            this.SignOut.Foreground= (Brush)(new BrushConverter().ConvertFrom("#007986"));
+            this.SignOut.Background = Brushes.White;
+            this.SignOut.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#007986")); ;
             this.ErrorLogo1.Visibility = Visibility.Hidden;
             this.typeKeyLabelError.Foreground = (Brush)(new BrushConverter().ConvertFrom("#F15249"));
             this.typeKeyLabelError.Visibility = Visibility.Hidden;
