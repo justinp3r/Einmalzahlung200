@@ -22,10 +22,7 @@ namespace Einmalzahlung200
     /// </summary>
     public partial class WindowRegister : Window
     {
-        //Dateipfade zur Datenbank
-        public string dateipfadUN = "C:\\Users\\justi\\Desktop\\Einmalzahlung200\\Usernames.txt";
-        public string dateipfadPW = "C:\\Users\\justi\\Desktop\\Einmalzahlung200\\Passwords.txt";
-        public string dateipfadDT = "C:\\Users\\justi\\Desktop\\Einmalzahlung200\\data.txt";
+        //Dateipfad zur Datenbank
         public string data = "C:\\Users\\justi\\Desktop\\Einmalzahlung200\\allData.txt";
         public WindowRegister()
         {

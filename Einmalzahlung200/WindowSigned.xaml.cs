@@ -22,7 +22,6 @@ namespace Einmalzahlung200
     public partial class WindowSigned : Window
     {
         string dateipfadDT = "C:\\Users\\justi\\Desktop\\Einmalzahlung200\\data.txt";
-        string keyVer = "C:\\Users\\justi\\Desktop\\Einmalzahlung200\\KeyVerification.txt";
         public WindowSigned()
         {
             InitializeComponent();
