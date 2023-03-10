@@ -42,11 +42,11 @@
 
         <Label 
             Name="typeKeyLabelError"  
-            Content="Feld ist leer"  
-            Width="120" Height="25"  
+            Content="Ungültiger Key"  
+            Width="75" Height="25"  
             Canvas.Left="0" Canvas.Top="0"  
             FontSize="11" FontFamily="Calibri"  
-            FontWeight="Normal" Margin="200,0,0,70"
+            FontWeight="Normal" Margin="130,0,0,70"
             VerticalAlignment="center"/>
 
         <TextBox 

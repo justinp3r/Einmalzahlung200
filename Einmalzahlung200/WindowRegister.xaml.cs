@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Timers;
 using System.Threading;
+using System.Net.Sockets;
+using System.Security.Cryptography;
 
 namespace Einmalzahlung200
 {
@@ -76,7 +78,7 @@ namespace Einmalzahlung200
             {
                 this.username = un;
                 this.password = pd;
-                this.key = "0";
+                this.key = sha256_hash(un+pd);
             }
         }
 
@@ -90,6 +92,20 @@ namespace Einmalzahlung200
             stun.Close();
         }
 
+        //Erstellt einen SHA256 Hash
+        public static String sha256_hash(String UN)
+        {
+            StringBuilder Sb = new StringBuilder();
+            using (SHA256 hash = SHA256Managed.Create())
+            {
+                Encoding enc = Encoding.UTF8;
+                Byte[] result = hash.ComputeHash(enc.GetBytes(UN));
+
+                foreach (Byte b in result)
+                    Sb.Append(b.ToString("x2"));
+            }
+            return Sb.ToString();
+        }
         //Diese Funktion checkt ob der Username verfügbar ist
         //Und legt dann ein Konto an.
         private void register_Click(object sender, RoutedEventArgs e)

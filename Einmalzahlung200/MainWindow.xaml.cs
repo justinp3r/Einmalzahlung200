@@ -122,7 +122,8 @@ namespace Einmalzahlung200
             //Nur wenn Username existiert und Passwort korrekt ist, kommt man in die Log-In Form.
             if (UNexists && PWcorrect)
             {
-                Window w1 = new WindowSigned();
+                //Daten mit denen im neuen Fenster angemeldet wird, werden zugleich an das neue Fenster übertragen
+                Window w1 = new WindowSigned(userData[0], userData[1], userData[2]);
                 w1.Show();
                 this.Hide();
             }

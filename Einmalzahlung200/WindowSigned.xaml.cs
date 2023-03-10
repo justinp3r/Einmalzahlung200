@@ -22,7 +22,10 @@ namespace Einmalzahlung200
     public partial class WindowSigned : Window
     {
         string dateipfadDT = "C:\\Users\\justi\\Desktop\\Einmalzahlung200\\data.txt";
-        public WindowSigned()
+        string Username;
+        string Password;
+        string Hash;
+        public WindowSigned(string currentUser, string currentPassword, string currentHashkey)
         {
             InitializeComponent();
             this.Background = Brushes.White;
@@ -41,6 +44,9 @@ namespace Einmalzahlung200
             this.ErrorLogo2.Visibility = Visibility.Hidden;
             this.chooseIbanLabelError.Foreground = (Brush)(new BrushConverter().ConvertFrom("#F15249"));
             this.chooseIbanLabelError.Visibility = Visibility.Hidden;
+            this.Username = currentUser;
+            this.Password = currentPassword;
+            this.Hash = currentHashkey;
 
         }
         private void SignOut_Click(object sender, RoutedEventArgs e)
@@ -68,14 +74,17 @@ namespace Einmalzahlung200
             bool b_correct = true;
             //Bei jedem neuklicken Fehler resetten
             resetErrorSigns();
-            if (typeKey.Text.Length == 0)
+
+            //Abfrage des Sicherheitsschlüssels überprüfen
+            if (typeKey.Text != Hash)
             {
                 this.typeKeyLabelError.Visibility = Visibility.Visible;
                 this.ErrorLogo1.Visibility = Visibility.Visible;
                 b_correct = false;
             }
 
-            if (chooseIban.Text.Length != 22)
+            //Prüfen ob die Iban 22 Zeichen lang ist und ob die ersten beiden Characters aus Buchstaben bestehen
+            if (chooseIban.Text.Length != 22 && char.IsLetter(chooseIban.Text[0]) && char.IsLetter(chooseIban.Text[0]))
             {
                 this.chooseIbanLabelError.Visibility = Visibility.Visible;
                 this.ErrorLogo2.Visibility = Visibility.Visible;
@@ -87,13 +96,7 @@ namespace Einmalzahlung200
             {
                 return;
             }
-
-            //Iban in DATA Abspeichern
-            StreamWriter stIBAN = new StreamWriter(dateipfadDT, true);
-            stIBAN.WriteLine(chooseIban.Text);
-            stIBAN.Close();
-
-           
+            //--------Hier Funktion zum Abspeichern der IBAN einspeichern--------
         }
     }
 }
