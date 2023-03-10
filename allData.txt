@@ -1,0 +1,2 @@
+admin|12345678|0
+admin01|aaaaaaaa|0

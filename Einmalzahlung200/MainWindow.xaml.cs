@@ -25,6 +25,7 @@ namespace Einmalzahlung200
     {
         public string dateipfadUN = "C:\\Users\\justi\\Desktop\\Einmalzahlung200\\Usernames.txt";
         public string dateipfadPW = "C:\\Users\\justi\\Desktop\\Einmalzahlung200\\Passwords.txt";
+        public string data = "C:\\Users\\justi\\Desktop\\Einmalzahlung200\\allData.txt";
         public MainWindow()
         {
             InitializeComponent();
@@ -70,78 +71,62 @@ namespace Einmalzahlung200
             this.ErrorUserNotExists.Visibility = Visibility.Hidden;
         }
 
-        //Diese Funktion ruft die Textdatei mit den Usernames auf
-        //und überträgt alle Einträge in eine liste, die sie dann zurück gibt
-        public List <string> currentUsernames(int lines)
-        {
-            List<string> liste = new List<string>();
-            StreamReader rdun = new StreamReader(dateipfadUN);
-            for (int i = 0; i < lines; i++)
-            {
-                liste.Add(rdun.ReadLine());
-            }
-            rdun.Close();
-            return liste;
-        }
-
-        //Diese Funktion ruft die Textdatei mit den Passwörtern auf
-        //und überträgt alle Einträge in eine liste, die sie dann zurück gibt
-        public List<string> currentPasswords(int lines)
-        {
-            List<string> liste = new List<string>();
-            //Container Passwörter füllen
-            StreamReader rdpw = new StreamReader(dateipfadPW);
-            for (int i = 0; i < lines; i++)
-            {
-                liste.Add(rdpw.ReadLine());
-            }
-            rdpw.Close();
-            return liste;
-        }
-        //Diese Funktion checkt ob die eingegebenen Daten denen der Datenbank(Textfiles) entsprechen.
-        //Es wird mit zwei Listen gearbeitet, beide sind als Listen implementiert und werden mit den Werten
-        //der textfile gefüllt.
-        //Die Textdateien sind so aufgebaut, dass der 6. Wert der Username Datei zum 6. Wert der Passwort Datei gehört.
-        //Dieser Vergleich wird dann am Ende der Funktion auch ausgeführt.
+        //Diese Funktion checkt ob die eingegebenen Daten denen der Datenbank(Textfiles) entsprechen..
+        //
         public void validate(string UN, string PW)
         {
             resetErrorSigns();
 
             //Zählt wie viele Lines es in der Datei gibt (für den Loop)
-            int lineCount = File.ReadLines(dateipfadUN).Count();
+            int lineCount = File.ReadLines(data).Count();
 
-            //Diese beiden Container werden mit allen Login Daten gefüllt
-            List<string> ContainerUN = currentUsernames(lineCount);
-            List<string> ContainerPW = currentPasswords(lineCount);
+            bool UNexists = false;
+            bool PWcorrect = false;
+            //Dieses Array wird temporär angelegt um die Userdata der aktuellen Person aus der Datenbank zwischen zu speichern
+            string[] userData = new string[3];
 
-            int index = 0;
-
+            //Hier wird geschaut ob der Username überhaupt existiert
+            //Der StreamReader loopt durch die gesamten Dateien und füllt den Array userData mit den Daten des gesuchten Accounts
+            //sofern dieser existiert.
+            StreamReader rd = new StreamReader(data);
             for (int zl = 0; zl < lineCount; zl++)
             {
-                //Checken ob eingegebener Username in der Datennbank(Textdatei) existiert
-                if (ContainerUN[zl]==UN)
+                string dataline = rd.ReadLine();
+                string[] datalineArray = dataline.Split(new char[] { '|' });
+                //Checken ob es den Username überhaupt gibt
+
+                if (datalineArray[0].ToString() == UN)
                 {
-                    index = zl;//Index merken
-                    zl = lineCount; //for schleife vorzeitig beenden
+                    UNexists = true;
+                    zl = lineCount; //forschleife beenden, da Value gefunden wurde
+                    userData = datalineArray; //Daten in Array außerhalb der loop abspeichern
                 }
             }
+            rd.Close();
 
-            //Vergleicht ob eingabe und datenbankeintrag bei passwort und username identisch sind
-            if (ContainerUN[index] == UN && ContainerPW[index]==PW)
+            //Im folgenden werden Username und Passwort auf existenz und richtigkeit überprüft
+            if (!UNexists)
+            {
+                this.ErrorUserNotExists.Visibility = Visibility.Visible;
+            }
+
+            if (UNexists && !PWcorrect)
+            {
+                this.ErrorWrongPassword.Visibility = Visibility.Visible;
+            }
+
+            //Checken ob das Passwort aus Datenbank mit eingegebenen Passwort übereinstimmt
+            if (userData[1] == PW)
+            {
+                PWcorrect = true;
+            }
+
+            //Nur wenn Username existiert und Passwort korrekt ist, kommt man in die Log-In Form.
+            if (UNexists && PWcorrect)
             {
                 Window w1 = new WindowSigned();
                 w1.Show();
                 this.Hide();
-            }
-            //Wenn Username stimmt, Passwort aber nicht, dann soll eine Fehlermeldung ausgegeben werden
-            else if (ContainerUN[index]==UN && ContainerPW[index] != PW)
-            {
-                this.ErrorWrongPassword.Visibility = Visibility.Visible;
-            }
-            //Wenn weder UN noch PW stimmen, soll entsprechende Fehlermeldung dafür ausgegeben werden
-            else
-            {
-                this.ErrorUserNotExists.Visibility = Visibility.Visible;
             }
         }
     }

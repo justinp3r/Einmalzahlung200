@@ -22,6 +22,7 @@ namespace Einmalzahlung200
     public partial class WindowSigned : Window
     {
         string dateipfadDT = "C:\\Users\\justi\\Desktop\\Einmalzahlung200\\data.txt";
+        string keyVer = "C:\\Users\\justi\\Desktop\\Einmalzahlung200\\KeyVerification.txt";
         public WindowSigned()
         {
             InitializeComponent();
@@ -88,9 +89,12 @@ namespace Einmalzahlung200
                 return;
             }
 
+            //Iban in DATA Abspeichern
             StreamWriter stIBAN = new StreamWriter(dateipfadDT, true);
             stIBAN.WriteLine(chooseIban.Text);
             stIBAN.Close();
+
+           
         }
     }
 }

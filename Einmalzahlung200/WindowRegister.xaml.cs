@@ -26,6 +26,7 @@ namespace Einmalzahlung200
         public string dateipfadUN = "C:\\Users\\justi\\Desktop\\Einmalzahlung200\\Usernames.txt";
         public string dateipfadPW = "C:\\Users\\justi\\Desktop\\Einmalzahlung200\\Passwords.txt";
         public string dateipfadDT = "C:\\Users\\justi\\Desktop\\Einmalzahlung200\\data.txt";
+        public string data = "C:\\Users\\justi\\Desktop\\Einmalzahlung200\\allData.txt";
         public WindowRegister()
         {
             //Elemente beschreiben(Farben und Höhe)
@@ -66,18 +67,30 @@ namespace Einmalzahlung200
             w1.Show();
             this.Close();
         }
+
+        //Klasse Nutzer beschreibt einen account
+        class Nutzer
+        {
+            public string username;
+            public string password;
+            public string key;
+
+            public Nutzer(string un, string pd)
+            {
+                this.username = un;
+                this.password = pd;
+                this.key = "0";
+            }
+        }
+
         //Diese Funktion erstellt einen neuen Nutzer
+        //Der nutzer bekommt eine eigene Line mit allen Daten
         public void createNewUser(string Username, string Password)
         {
-            StreamWriter stun = new StreamWriter(dateipfadUN, true);
-            stun.WriteLine(Username);
+            Nutzer N1 = new Nutzer(Username, Password);
+            StreamWriter stun = new StreamWriter(data, true);
+            stun.WriteLine(N1.username+"|"+N1.password+"|"+N1.key);
             stun.Close();
-
-            StreamWriter stpw = new StreamWriter(dateipfadPW, true);
-            stpw.WriteLine(Password);
-            stpw.Close();
-
-
         }
 
         //Diese Funktion checkt ob der Username verfügbar ist
@@ -85,47 +98,34 @@ namespace Einmalzahlung200
         private void register_Click(object sender, RoutedEventArgs e)
         {
             resetErrorSigns();
-            //Diese beiden Container werden mit allen Login Daten gefüllt
-            List<string> ContainerUN = new List<string>();
-            List<string> ContainerPW = new List<string>();
-
-            //Zählt wie viele Lines es in der Datei gibt (für den Loop)
-            int lineCount = File.ReadLines(dateipfadUN).Count();
-
-
-            //Container Passwörter füllen
-            StreamReader rdpw = new StreamReader(dateipfadPW);
-            for (int i = 0; i < lineCount; i++)
-            {
-                ContainerPW.Add(rdpw.ReadLine());
-            }
-            rdpw.Close();
-
-            //Container Usernames füllen
-            StreamReader rdun = new StreamReader(dateipfadUN);
-            for (int i = 0; i < lineCount; i++)
-            {
-                ContainerUN.Add(rdun.ReadLine());
-            }
-            rdun.Close();
 
             bool bUsername = true;
             bool bPassword = true;
-            //Gibt Fehler am Bildschirm aus
-            if(ContainerUN.Contains(chooseUsername.Text)){
-                this.ErrorUsername.Visibility = Visibility.Visible;
-                this.ErrorLogo1.Visibility = Visibility.Visible;
-                bUsername = false;
+
+            int lineCount = File.ReadLines(data).Count();
+            StreamReader rd = new StreamReader(data);
+            //Gchecken ob username schon in datenbank existiert.
+            for (int i = 0; i < lineCount; i++) {
+                string dataline = rd.ReadLine();
+
+                //Splitted den String bei |
+                if (dataline.Split(new char[] {'|'})[0] == chooseUsername.Text) {
+                    this.ErrorUsername.Visibility = Visibility.Visible;
+                    this.ErrorLogo1.Visibility = Visibility.Visible;
+                    bUsername = false;
+                }
             }
+            rd.Close();
 
             //Passwortlängenkondition, mindestens 8 Zeichen!
-            if (choosePassword.Password.ToString().Length < 7)
+            if (choosePassword.Password.ToString().Length < 8)
             {
                 this.ErrorPasswordTooShort.Visibility = Visibility.Visible;
                 this.ErrorLogo2.Visibility = Visibility.Visible;
                 this.ErrorLogo3.Visibility = Visibility.Visible;
                 bPassword = false;
             }
+            //Wenn beide Passwörter nicht übereinstimmen => Fehlermeldung
             if (choosePassword.Password.ToString() != choosePasswordBest.Password.ToString())
             {
                 this.ErrorPassword.Visibility = Visibility.Visible;
